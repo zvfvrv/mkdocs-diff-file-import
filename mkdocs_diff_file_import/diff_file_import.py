@@ -1,5 +1,6 @@
 import mkdocs
 import re
+import os
 
 
 # Define a configuration class for the plugin
@@ -31,11 +32,22 @@ class ImportDiff(mkdocs.plugins.BasePlugin[GenericImportDiffConfig]):
             rf"(```({self.config.codeblock_name}) file=([^`]+)```)", markdown
         ):
             # Check if there are any matching groups
-            if len(instance.groups()):
+            if len(instance.groups()) == 3:
                 # The whole match to be replaced
                 replace = instance.groups()[0]
-                # Replace the matched code block with "test"
-                markdown = markdown.replace(replace, "test")
+                file_path = instance.groups()[2]
+                replacement_block = self._load_file_to_import(file_path)
+
+                # Replace the matched code block with replacement_block
+                markdown = markdown.replace(replace, replacement_block)
 
         # Return the modified markdown content
         return markdown
+
+    def _load_file_to_import(self, file_path) -> str:
+        if os.path.isfile(file_path):
+            file_content = open(file_path).read()
+            result_code_block = f"```diff \n\n{file_content} \n\n```"
+        else:
+            result_code_block = "```diff file not found```"
+        return result_code_block

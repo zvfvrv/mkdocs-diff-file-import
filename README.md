@@ -2,12 +2,12 @@
 
 ## Overview
 
-The `ImportDiff` plugin for MkDocs allows you to dynamically replace custom code blocks in your Markdown files with specific content. This plugin is particularly useful for managing and displaying differences between imported code files within your documentation.
+The `ImportDiff` plugin for MkDocs allows you to dynamically replace custom code blocks in your Markdown files with the content of specified files. This plugin is particularly useful for managing and displaying differences between imported code files within your documentation.
 
 ## Features
 
 - Configurable code block name to identify sections to be replaced.
-- Automatically replaces matching code blocks with specified content during the build process.
+- Automatically replaces matching code blocks with the content of specified files during the build process.
 - Easy integration with existing MkDocs projects.
 
 ## Installation
@@ -39,7 +39,7 @@ import-diff-file file=example.txt
 ```
 </pre>
 
-During the MkDocs build process, these code blocks will be replaced by the content defined in the plugin.
+During the MkDocs build process, these code blocks will be replaced by the content of the specified file.
 
 ## Example
 
@@ -49,7 +49,7 @@ Given the following content in a Markdown file:
 ```import-diff-file file=example.txt```
 </pre>
 
-The `ImportDiff` plugin will replace this block with the content of the file inside a clode block.
+The `ImportDiff` plugin will replace this block with the content of `example.txt`.
 
 ## Development
 
@@ -66,13 +66,13 @@ cd importdiff-mkdocs-plugin
 pip install -r requirements.txt
 ```
 
-### Run Tests
+<!-- ### Run Tests
 
 To run tests for the plugin, use the following command:
 
 ```bash
 pytest
-```
+``` -->
 
 ## Contributing
 
@@ -86,7 +86,7 @@ Contributions are welcome! Please fork the repository and submit a pull request 
 
 ## License
 
-This project is licensed under the MIT License. See the `LICENSE` file for more details.
+This project is licensed under the Apache 2.0 License. See the `LICENSE` file for more details.
 
 ## Contact
 
