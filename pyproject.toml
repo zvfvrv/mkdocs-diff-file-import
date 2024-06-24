@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "mkdocs-diff-file-import"
+version = "0.1.0"
+description = "Import a diff file as MkDocs code block"
+authors = ["Francesco Lombardo"]
+readme = "README.md"
+
+
+packages = [
+    { include = "mkdocs_diff_file_import" }
+]
+
+[tool.poetry.plugins."mkdocs.plugins"]
+"diff-file-import" = "mkdocs_diff_file_import.diff_file_import:ImportDiff"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+mkdocs = "^1.6.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
