@@ -8,7 +8,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    environment: release
+    permissions:
+      # IMPORTANT: this permission is mandatory for trusted publishing
+      id-token: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -38,8 +41,6 @@ jobs:
       - name: Build package
         run: poetry build
 
-      - name: Configure Poetry to use PyPI token
-        run: poetry config pypi-token.pypi "${{ secrets.PYPI_API_KEY }}"
+      - name: Publish package distributions to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
 
-      - name: Publish package
-        run: poetry publish
