@@ -90,4 +90,4 @@ This project is licensed under the Apache 2.0 License. See the `LICENSE` file fo
 
 ## Contact
 
-If you have any questions, issues, or suggestions, please open an issue in the GitHub repository or contact the maintainer at <franclombardo@gmail.com>.
+If you have any questions, issues, or suggestions, please open an issue in the GitHub repository.
