@@ -14,7 +14,7 @@ packages = [
 "diff-file-import" = "mkdocs_diff_file_import.diff_file_import:ImportDiff"
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.7"
 mkdocs = "^1.6.0"
 
 
