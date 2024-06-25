@@ -4,13 +4,10 @@ on:
   push:
     tags:
       - 'v*.*.*'  # (es. v1.0.0)
-    branches:
-      - development 
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
     environment: release
     permissions:
       id-token: write
@@ -46,40 +43,3 @@ jobs:
       - name: Publish package distributions to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
 
-  publish-dev:
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/development'  # Questo job si esegue solo per il branch development
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.7'
-
-      - name: Install Poetry
-        run: pip install poetry
-
-      - name: Cache Poetry dependencies
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/pypoetry
-          key: ${{ runner.os }}-poetry-${{ hashFiles('**/poetry.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-poetry-
-
-      - name: Install dependencies
-        run: poetry install
-
-      # - name: Run tests
-      #   run: poetry run pytest  
-
-      - name: Build package
-        run: poetry build
-
-      - name: Publish package distributions to GitHub Packages
-        uses: actions/upload-artifact@v3
-        with:
-          name: dist
-          path: dist/*
