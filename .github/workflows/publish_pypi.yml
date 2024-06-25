@@ -3,13 +3,14 @@ name: Publish Python Package
 on:
   push:
     tags:
-      - 'v*.*.*'  # (ad es. v1.0.0)
+      - 'v*.*.*'  # (es. v1.0.0)
     branches:
-      - development  # Aggiungi questo per i commit su branch development
+      - development 
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
     environment: release
     permissions:
       id-token: write
@@ -37,7 +38,7 @@ jobs:
         run: poetry install
 
       # - name: Run tests
-      #   run: poetry run pytest  # Assumendo che tu usi pytest per i test
+      #   run: poetry run pytest  
 
       - name: Build package
         run: poetry build
@@ -72,7 +73,7 @@ jobs:
         run: poetry install
 
       # - name: Run tests
-      #   run: poetry run pytest  # Assumendo che tu usi pytest per i test
+      #   run: poetry run pytest  
 
       - name: Build package
         run: poetry build
