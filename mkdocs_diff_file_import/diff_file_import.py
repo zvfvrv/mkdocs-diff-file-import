@@ -49,5 +49,5 @@ class ImportDiff(mkdocs.plugins.BasePlugin[GenericImportDiffConfig]):
             file_content = open(file_path).read()
             result_code_block = f"```diff \n\n{file_content} \n\n```"
         else:
-            result_code_block = "```diff file not found```"
+            result_code_block = f"```diff file not found. cwd {os.getcwd()}```"
         return result_code_block
