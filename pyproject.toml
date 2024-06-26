@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "mkdocs-diff-file-import"
-version = "0.1.4"
+version = "0.1.5"
 description = "Import a diff file as MkDocs code block"
 authors = ["Francesco Lombardo"]
 readme = "README.md"
