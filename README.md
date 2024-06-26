@@ -1,8 +1,8 @@
-# ImportDiff MkDocs Plugin
+# **mkdocs-diff-file-import** MkDocs Plugin
 
 ## Overview
 
-The `ImportDiff` plugin for MkDocs allows you to dynamically replace custom code blocks in your Markdown files with the content of specified files. This plugin is particularly useful for managing and displaying differences between imported code files within your documentation.
+The `mkdocs-diff-file-import` plugin for MkDocs allows you to dynamically replace custom code blocks in your Markdown files with the content of specified files. This plugin is particularly useful for managing and displaying differences between imported code files within your documentation.
 
 ## Features
 
@@ -15,17 +15,17 @@ The `ImportDiff` plugin for MkDocs allows you to dynamically replace custom code
 To install the plugin, you can use `pip`:
 
 ```bash
-pip install importdiff-mkdocs-plugin
+pip install mkdocs-diff-file-import
 ```
 
 ## Configuration
 
-To use the `ImportDiff` plugin, add it to your `mkdocs.yml` configuration file:
+To use the `mkdocs-diff-file-import` plugin, add it to your `mkdocs.yml` configuration file:
 
 ```yaml
 plugins:
   - search
-  - importdiff:
+  - diff-file-import:
       codeblock_name: import-diff-file  # Optional, default is 'import-diff-file'
 ```
 
@@ -46,25 +46,36 @@ During the MkDocs build process, these code blocks will be replaced by the conte
 Given the following content in a Markdown file:
 
 <pre>
-```import-diff-file file=example.txt```
+```import-diff-file file=example.diff```
 </pre>
 
-The `ImportDiff` plugin will replace this block with the content of `example.txt`.
+The `mkdocs-diff-file-import` plugin will replace this block with the content of `example.diff` inside a diff code block:
 
-## Development
+<pre>
+```diff
+[edit routing-instances l3vpn-test]
+-    vrf-table-label;
+[edit protocols bgp]
++    bgp-error-tolerance {
++        malformed-route-limit 0;
++    }
+```
+</pre>
+
+<!-- ## Development
 
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/importdiff-mkdocs-plugin.git
-cd importdiff-mkdocs-plugin
+git clone https://github.com/zvfvrv/mkdocs-diff-file-import.git
+cd mkdocs-diff-file-import
 ```
 
 ### Install Dependencies
 
 ```bash
 pip install -r requirements.txt
-```
+``` -->
 
 <!-- ### Run Tests
 
