@@ -47,7 +47,11 @@ class ImportDiff(mkdocs.plugins.BasePlugin[GenericImportDiffConfig]):
     def _load_file_to_import(self, file_path) -> str:
         if os.path.isfile(file_path):
             file_content = open(file_path).read()
-            result_code_block = f"```diff \n\n{file_content} \n\n```"
+            #result_code_block = f"```diff \n\n{file_content} \n\n```"
+            result_code_block = f'''
+            ```diff
+                {file_content}
+            ```'''
         else:
             result_code_block = f"```diff file not found. cwd {str(os.listdir(os.getcwd()))}```"
         return result_code_block
